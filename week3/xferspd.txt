@@ -1,0 +1,44 @@
+ Spec                          also known as...                                  bitwidth       ns       Mhz         MBps     
+ SCSI                          SCSI-1, ANSI X3T9.2 CCS                                8        200       5.00         5.0     
+ SCSI-2                        ANSI ASC X3T9.3                                        8        200       5.00         5.0     
+ SCSI-2 Fast                   FastSCSI                                               8        100      10.00        10.0     
+ SCSI-2 Wide                   WideSCSI                                              16        200       5.00        10.0     
+ SCSI-2 Wide                   WideSCSI                                              32        200       5.00        20.0     
+ SCSI-2 Fast&Wide              FastWideSCSI, FW/SCSI                                 16        100      10.00        20.0     
+ SCSI-2 Fast&Wide              FastWideSCSI, FW/SCSI                                 32        100      10.00        40.0     
+ SCSI-3 Ultra                  UltraSCSI                                              8         50      20.00        20.0     
+ SCSI-3 UltraWide              UltraWideSCSI Ultra2                                  16         50      20.00        40.0     
+ SCSI-3 UltraWide              UltraWideSCSI                                         32         50      20.00        80.0     
+ Ultra3                        Ultra160/Fast-80(DT)                                  16                 40.00       160.0
+ Ultra320                      Fast-160(DT)                                          16                 80.00       320.0
+ Serial Attached SCSI          SAS                                                   1                  1500/3000   150/300
+                                                                                                                          
+
+ ATA PIO mode 0                IDE                                                   16        600       167          3.3     
+ ATA PIO mode 1                IDE (typical "IDE")                                   16        383       2.61         5.2     
+ ATA PIO mode 2                IDE                                                   16        240       4.17         8.3     
+ ATA-2 PIO mode 3              IDE-2 (typical "IDE-2")                               16        180       5.56        11.1
+ ATA-2 PIO mode 4              IDE-2                                                 16        120       8.33        16.7     
+ ATA-?? PIO mode 5             never implemented                                     16         90      11.11        22.2     
+ ATA single DMA 0              IDE                                                   16        960       1.04         2.1     
+ ATA single DMA 1              IDE                                                   16        480       2.08         4.2     
+ ATA single DMA 2              IDE                                                   16        240       4.17         8.3     
+ ATA multiword DMA 0           IDE                                                   16        480       2.08         4.2     
+ ATA-2 multiword DMA 1         EIDE, IDE-2 (other typical "IDE-2")                   16        150       6.67        13.3     
+ ATA-2 multiword DMA 2         EIDE, IDE-2                                           16        120       8.33        16.7     
+ UltraATA multiword DMA 3      UltraATA, IDE-3, ATA 33                               16         60      16.67        33.3     
+                                                                                                                             
+ USB                                                                                   1  83.33333      12.00         1.5     
+                                                                                                                             
+ P1394                         FireWire (w/low speed cabling)                          1      1.25     800.00       100.0      
+ P1394                         FireWire (w/high performance cabling)                   1    0.3125    3,200.00      400.0      
+ 
+ SATA
+
+ SATA150                       Serial ATA                                              1                 1500         150.0
+ SATA 3Gb/s                    SATA-II (incorrectly)                                   1                 3000         300.0
+
+ SCSI - bus technology, flexible, many kinds of devices, (commonly) 8 devices SCSI or (rarely) 64 devices SCSI-2 w/LUN.  Also, SCSI2 comes in Differential or SE versions, specifying voltage limits, and devices are not interchangeable.  Ultra2 SCSI uses LVD, for Low-voltage differential, which is non-compatible with differential and SE devices.
+ ATA - direct connect technology, limited kinds of devices (ATA hd, ATA cdrom, ATA tapes), 3 devices (computer, master, slave)
+ SATA - 1 device per cable, 1 device per channel, 0.25 Volt instead of 5volt, 
+ USB - Serial, one device per cable, but controllers support many devices plugged into a hub.  Not all devices will function as well when plugged into a hub as when plugged in directly.  127 devices maximum, per controller, with 7 devices per hub.  5 Volts at 0.5 amps.

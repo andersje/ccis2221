@@ -1,0 +1,208 @@
+<html>
+	<head>
+		<title>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-77508642-4', 'auto');
+      ga('send', 'pageview');
+
+      </script>
+			Current upgrade plan for mail.angelar.com</title></head>
+	<body bgcolor=white>
+
+<h3>CURRENT SERVICES</h3>
+<pre>
+[1]General authentication/configuration data
+[2]email 
+	receive for:
+		angelar.com
+		htclug.org
+		shatner.boldlygoingnowhere.org
+		class.multitool.net
+		mail.angelar.com
+		smtp.angelar.com
+	forward for:
+		192.168.1.x
+		localhost
+	all other relaying denied
+	*email for angelar@shatner.boldlygoingnowhere.org MUST BE ACCEPTED
+[3]firewall
+[4]samba server
+[5]NFS server
+[6]CVS server
+[7]SSH server
+[8]webserver for:
+	www.htclug.org[9][13]
+	angelar.com
+	linux.angelar.com
+	www.angelar.com
+[9]mysql server
+[10]majordomo mailing list server
+[11]bestcrypt
+[12]dhcp server
+[13]PHP
+[14]awstats
+[15]POP3s 
+[16]Miscellaneous commandline utilities
+</pre>
+
+<h3>FILES WHICH MUST BE SAVED:</h3>
+<ol>
+<li>general<ul>
+	<li>/etc/passwd</li>
+		<li>/etc/shadow</li>
+		<li>/etc/group</li>
+		<li>/etc/profile</li>
+		<li>/etc/profile.d</li>
+		<li>/home</li>
+		<li>/var/log</li>
+		<li>/root</li>
+		<li>/var/spool/cron</li>
+		</ul></li>
+<li>mail
+<ul>
+		<li>see item [1]</li>
+		<li>/etc/mail
+		<li>/etc/aliases</li>
+		<li>/etc/aliases.majordomo</li>
+		<li>/var/log/mail</li>
+		<li>/var/spool/mail</li>
+		</ul></li>
+<li>firewall<ul>
+		<li>/etc/rc.d/init.d/rc.firewall</li>
+		<li>/etc/sysconfig</li>
+		<li>eth1=eepro100</li>
+		<li>eth0=lite-on tulip</li>
+		</ul></li>
+<li>samba	<ul>	
+		<li>/etc/samba</li>
+		</ul></li>
+<li>nfs	<ul>
+		<li>see item [1]</li>
+		<li>/etc/exports</li>
+		</ul></li>
+<li>cvs	<ul>	
+		<li>see item [1]</li>
+		<li>/home/cvs</li></ul></li>
+<li>ssh	<ul>	
+		<li>/etc/ssh</li>
+		</ul></li>
+<li>httpd	<ul>
+		<li>/usr/local/apache2/</li>
+		<li>/etc/rc.d/init.d/httpd</li>
+		<li>symbolic link from /var/log/httpd to /usr/local/apache2/logs</li>
+		<li>/etc/rc.d/rc5.d/S85httpd</li>
+		</ul></li>
+<li>mysql	<ul>	
+		<li>see item [1]</li>
+		<li>/var/lib/mysql</li>
+		</ul></li>
+<li>majordomo <ul>	
+		<li>/home/majordomo  (includes all necessary binaries)</li>
+		<li>/etc/majordomo.aliases</li>
+		</ul></li>
+<li>bestcrypt <ul>	
+		<li>need bestcrypt code.  in ~jeremy</li>
+		</ul></li>
+<li>dhcp server<ul>	
+		<li>/etc/dhcpd.conf</li>
+		</ul></li>
+<li>PHP <ul>   
+		<li>/usr/local/lib/php</li>
+		<li>/usr/local/lib/php.ini</li>
+		<li>/usr/local/apache2/modules/libphp4.so</li>
+		</ul></li>
+<li>awstats <ul>  
+		<li>/etc/opt/awstats</li>
+		<li>/var/cache/awstats</li>
+		</ul></li>
+<li>POP3s  <ul>
+		<li>/etc/xinetd.d/pop3s</li>
+		<li>/etc/ssl</li>
+		</ul></li>
+<li>Command line utilities <ul>
+		<li>grepmail</li>
+		</ul></li>
+		</ol>
+
+<ul>
+<li>/home/jeremy/noarch does NOT need to be saved, provided all CVS changes are checked in.</li>
+
+<li>/etc does not change often, so can be backedup before hand.  Size is small, so can be soft-backedup to thor.</li>
+<li>/var cannot be backed up while cable modem is active.</li>
+</ul>
+<h3>FILESYSTEM MAP</h3>
+<pre>
+Filesystem            Size  Used Avail Use% Mounted on
+/dev/hda5              92M   77M  9.8M  89% /
+/dev/hda6              51G   20G   32G  39% /home
+/dev/hdb6             9.0G  533M  8.0G   7% /sandbox
+/dev/hda9             122M  105K  116M   1% /tmp
+/dev/hdb1             796M  8.0K  755M   1% /tmp2
+/dev/hda8             3.1G  1.7G  1.3G  58% /usr
+/dev/hda7             981M  184M  748M  20% /var
+</pre>
+
+<h3>PLAN</h3>
+<ol>
+<li>Create shell script to make tar archive of all FILES WHICH MUST BE SAVED.  Test before outage window</li>
+<li>deactivate cable modem.</li>
+<li>label NICs and cables.</li>
+<li>drop mysql, apache, sendmail, other services</li>
+<li>backup FILES WHICH MUST BE SAVED to a file on machine THOR</li>
+<li>powerdown</li>
+<li>make hardware changes:<ol>
+	<li>install new CDRW</li>
+	<li>remove LS120</li>
+	<li>install auxiliary harddrive on /dev/hdb</li>
+	</ol></li>
+<li>install new OS</li>
+<li>boot</li>
+<li>ensure that following services start at boot:<ul>
+   <li>spamd</li>
+	<li>httpd</li>
+	<li>sendmail</li>
+	<li>nfsd</li>
+	<li>portmap</li>
+	<li>sshd</li>
+	<li>dhcpd</li>
+	<li>mysqld</li>
+	<li>smbd</li>
+	<li>nmbd</li>
+	<li>xinetd</li>
+	</ul></li>
+<li> initiate test plan:<ol>
+manual for this run, yes I know that sucks.
+	<li>test emails to:<ul>
+		<li>list of emails deleted to try to impede spam</li>
+		</ul></li>
+	<li>telnet to port 25 from a remote machine and attempt relaying, to ensure that it is denied</li>
+	<li>test websites:<ol>
+		<li>www.htclug.org</li>
+		<li>www.angelar.com</li>
+		<li>linux.angelar.com</li>
+		</ol></li>
+	<li>connect laptop to network, and verify that it can DHCP an address</li>
+	<li>ensure that directories can be nfs mounted.</li>
+	<li>ensure that cvs stuff can be checked out.</li>
+	<li>verify that Angela's machine can retrieve mail via POP3s</li>
+	<li>ensure that same passwords work!</li>
+	<li>activate cable modem</li>
+	<li>bring external NIC online</li>
+	<li>run firewall script</li>
+	<li>ensure NAT works for internal workstations</li>
+	<li>test websites from external machine</li>
+	<li>ensure that firewall script will run at boot time</li>
+	<li>ssh login to firewall from machine on internet</li>
+</ol></li>
+<li>Email announcement to users that upgrade is complete, and let them know to notify me immediately if they find anything amiss</li>
+<li>continue documenting problems with upgrade for next few weeks, to be incorporated into new, improved plan</li>
+</ol>
+</pre>
+	<a href="slide3.html">NEXT</a>
+	<a href="slide1.html">BACK</a>
+	</html>
